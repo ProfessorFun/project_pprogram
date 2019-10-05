@@ -10,7 +10,7 @@
 <body>
   <h1 align="center">後臺管理系統</h1><br><br>
 
-  <table class="tab" border="1" align="center">
+  <table class="tab" id="tab" border="1" align="center">
 
     <tr class="ro">
       <th width=30%>
@@ -46,7 +46,7 @@
     <tr>
       <p align="center">
         <input type="button" id="leftButton" value="before"></input>
-        <input type="button" id="rightButton" value=" next   "></input>
+        <input type="button" onclick="clear_table()" id="rightButton" value="next"></input>
       </p>
     </tr>
   </table>
@@ -148,6 +148,11 @@
       )
       $("td.edit").children("p").css("display", "none");
     }
+
+    function clear_table(){
+      $("#tab tr:not(:first)").html("");
+    }
+
 
 
 

@@ -7,6 +7,13 @@
   <link href="manage.css" rel="stylesheet" type="text/css" />
 </head>
 
+<style>
+    .tab tr:nth-child(odd) {background: rgb(238, 238, 238)}
+    .tab tr:nth-child(even) {background: #FFF}
+    .tab tr:hover {background-color: rgb(211, 211, 211);}
+
+ </style>
+
 <body>
   <h1 align="center">後臺管理系統</h1><br><br>
 
@@ -41,11 +48,11 @@
     </tr>
 
   </table>
-
+ 
   <table>
     <tr>
       <p align="center">
-        <input type="button" id="leftButton" value="before"></input>
+        <input type="button" onclick="clear_table()" id="leftButton" value="before"></input>
         <input type="button" onclick="clear_table()" id="rightButton" value="next"></input>
       </p>
     </tr>
@@ -143,8 +150,9 @@
             $('<input type="button" onclick="Delete_Id(this)" value="刪除" style="margin:5px;width:50px;height:50px;">'),
             $('<p>', { text: element[0] })
           )
-        )
+        ),
 
+        //$(".tab").css("background-color","switch_color()")
       )
       $("td.edit").children("p").css("display", "none");
     }
@@ -153,8 +161,18 @@
       $("#tab tr:not(:first)").html("");
     }
 
-
-
+    /*function switch_color(){
+      if(table_color_swich%2==0)
+      {
+        return lightgrey;
+        table_color_swich+=1;
+      }
+      else
+      {
+        return white;
+        table_color_swich+=1;
+      }
+    }*/
 
     function Edit_Id(e) {
       let EdId = e.nextSibling;

@@ -1,0 +1,97 @@
+body {
+	background-color: rgb(219, 219, 219);
+	font-family:"Microsoft JhengHei";
+}
+
+table{
+	background-color: rgb(255, 255, 255);
+	border-collapse: collapse;
+	width: 84%;
+	word-wrap: break-word;
+	table-layout: fixed;
+}
+
+.source_filter{
+	cursor: pointer;
+}
+
+.display_filter{
+	cursor: pointer;
+}
+
+.ro{
+	background-color: #e7e5e5;
+	
+}
+
+h6{
+	color:white;
+	margin:0px 0px 0px 0px;
+}
+
+.button{
+	margin:5px;
+	width:50px;
+	height:24px;
+}
+
+.id {
+	font-size: 17px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+.title {
+	width:30%;
+	font-size: 17px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+.source {
+	width:10%;
+	font-size: 17px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+.category {
+	width:15%;
+	font-size: 17px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+.tag {
+	width:15%;
+	font-size: 17px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+.display {
+	width:6%;
+	font-size: 17px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.delete {
+	width:4%;
+	font-size: 17px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.edit {
+	width:4%;
+	font-size: 17px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

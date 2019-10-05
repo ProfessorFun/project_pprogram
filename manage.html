@@ -125,17 +125,17 @@
                             ),
 
                           $('<td colspan="2" class="edit">').append(
-                            $('<input type="button" onclick="Edit_Id(this)" value="編輯"  style="margin:5px;width:50px;height:50px;">'),
-                              $('<p>',{text: element[0] }),
+                            $('<input type="button" onclick="Edit_Id(this)" value="編輯"  style="margin:5px;width:50px;height:50px;">'),                      
                             $('<input type="button" onclick="Delete_Id(this)" value="刪除" style="margin:5px;width:50px;height:50px;">'),
-                              $('<p>',{text: element[0] }),
+                              $('<p>',{text: element[0] })
 
-                            $("td.edit").children("p").css("display","none"),
-                            $("td.delete").children("p").css("display","none")
+                            
                           )
+                          
                         )
+                        
                       )
-
+                      $("td.edit").children("p").css("display","none");
 
 
     }

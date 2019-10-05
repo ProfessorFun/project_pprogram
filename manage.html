@@ -1,183 +1,178 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>test</title>
   <meta charset="utf-8">
   <link href="manage.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-    <h1 align = "center">後臺管理系統</h1><br><br>
+  <h1 align="center">後臺管理系統</h1><br><br>
 
   <table class="tab" border="1" align="center">
 
-    <tr class="ro" >
-        <th width=30%>
-            標題
-        </th>
+    <tr class="ro">
+      <th width=30%>
+        標題
+      </th>
 
-        <th width=10% class="source_filter">
-            來源
-        </th>
+      <th width=10% class="source_filter">
+        來源
+      </th>
 
-        <th width=15%>
-            類別
-        </th>
+      <th width=15%>
+        類別
+      </th>
 
-        <th width=15%>
-            TAG
-        </th>
+      <th width=15%>
+        TAG
+      </th>
 
-        <th width=6% class="display_filter">
-            顯示
-        </th>
+      <th width=6% class="display_filter">
+        顯示
+      </th>
 
-        <th width=8% colspan="2">
-            
-        </th>
+      <th width=8% colspan="2">
 
-        
+      </th>
+
+
     </tr>
 
   </table>
-    <script src="jquery-3.4.1.js"></script>
-    <script>
+  <script src="jquery-3.4.1.js"></script>
+  <script>
 
-  $(function () {/*API操作和顯示區*/
-        var final_hash;
-        var user_name;
-        var local_hash;
-        var url = window.location.search;
-        var hash = url.substr(1);
-        if (hash != ""){
-            if(hash.substr(0,10) < 0){
-                localStorage.user= hash;
-                local_hash = localStorage.user;
-                final_hash = local_hash.substr(0,20);
-                user_name = local_hash.substr(20);
-            }else {
-                localStorage.user= hash;
-                local_hash = localStorage.user;
-                final_hash = local_hash.substr(0,19);
-                user_name = local_hash.substr(19);
-            }
+    $(function () {/*API操作和顯示區*/
+      var final_hash;
+      var user_name;
+      var local_hash;
+      var url = window.location.search;
+      var hash = url.substr(1);
+      if (hash != "") {
+        if (hash.substr(0, 10) < 0) {
+          localStorage.user = hash;
+          local_hash = localStorage.user;
+          final_hash = local_hash.substr(0, 20);
+          user_name = local_hash.substr(20);
+        } else {
+          localStorage.user = hash;
+          local_hash = localStorage.user;
+          final_hash = local_hash.substr(0, 19);
+          user_name = local_hash.substr(19);
         }
-        else {
-            local_hash = localStorage.user;
-            if(local_hash.substr(0,10) < 0){
-                final_hash = local_hash.substr(0,20);
-                user_name = local_hash.substr(20);
-            }else {
-                final_hash = local_hash.substr(0,19);
-                user_name = local_hash.substr(19);
-            }
+      }
+      else {
+        local_hash = localStorage.user;
+        if (local_hash.substr(0, 10) < 0) {
+          final_hash = local_hash.substr(0, 20);
+          user_name = local_hash.substr(20);
+        } else {
+          final_hash = local_hash.substr(0, 19);
+          user_name = local_hash.substr(19);
+        }
+      }
+
+      $.ajax({
+        type: 'get',
+        url: ' https://djangotest1156.herokuapp.com/api/RSS/get_info_for_page/',
+        data: {
+          "page": "1",
+          "source": "viablog",
+        },
+        success: function (result) {
+          console.log(result);
+          $.each(result[0], function (index, element) {
+            append_table(element);
+
+          });
+        },
+        error: function () {
+          alert("錯誤")
         }
 
-        $.ajax({
-            type: 'get',
-            url: ' https://djangotest1156.herokuapp.com/api/RSS/get_info_for_page/',
-            data: {
-                "page": "1",
-                "source":"viablog",
-            },
-            success: function (result) {
-                console.log(result);
-                  $.each(result[0], function(index,element) {
-                      append_table(element);
-                      
-                  });
-            },
-            error: function () {
-                alert("錯誤")
-            }
-
-        });
+      });
     });
 
 
-    function append_table(element){
+    function append_table(element) {
       $('.tab').append(
-                        $('<tr style="height: 200;">').append(
+        $('<tr style="height: 200;">').append(
 
-                          $('<td class="title">').append(
-                            $('<p>',
-                            {text:element[1]})
-                            ),
-                            
-
-                          $('<td class="source">').append(
-                            $('<p>',
-                            {text:element[2]})
-                            ),
-
-                          $('<td class="category">').append(
-                            $('<p>',
-                            {text:element[3]})
-                            ),
-
-                          $('<td class="tag">').append(
-                            $('<p>',
-                            {text:element[4]})
-                            ),
-
-                          $('<td class="display">').append(
-                            $('<p>',
-                            {text:element[5]})
-                            ),
-
-                          $('<td colspan="2" class="edit">').append(
-                            $('<input type="button" onclick="Edit_Id(this)" value="編輯"  style="margin:5px;width:50px;height:50px;">'),                      
-                            $('<input type="button" onclick="Delete_Id(this)" value="刪除" style="margin:5px;width:50px;height:50px;">'),
-                              $('<p>',{text: element[0] })
-
-                            
-                          )
-                          
-                        )
-                        
-                      )
-                      $("td.edit").children("p").css("display","none");
+          $('<td class="title">').append(
+            $('<p>',
+              { text: element[1] })
+          ),
 
 
+          $('<td class="source">').append(
+            $('<p>',
+              { text: element[2] })
+          ),
 
+          $('<td class="category">').append(
+            $('<p>',
+              { text: element[3] })
+          ),
+
+          $('<td class="tag">').append(
+            $('<p>',
+              { text: element[4] })
+          ),
+
+          $('<td class="display">').append(
+            $('<p>',
+              { text: element[5] })
+          ),
+
+          $('<td colspan="2" class="edit">').append(
+            $('<input type="button" onclick="Edit_Id(this)" value="編輯"  style="margin:5px;width:50px;height:50px;">'),
+            $('<input type="button" onclick="Delete_Id(this)" value="刪除" style="margin:5px;width:50px;height:50px;">'),
+            $('<p>', { text: element[0] })
+          )
+        )
+      )
+      $("td.edit").children("p").css("display", "none");
     }
 
 
 
     function Edit_Id(e) {
-        let EdId = e.nextSibling;
-        var EID = EdId.innerHTML;
-        console.log(EID);
-        window.location.href= "modify.html"+"?"+"id="+EID;
+      let EdId = e.nextSibling;
+      var EID = EdId.innerHTML;
+      console.log(EID);
+      window.location.href = "modify.html" + "?" + "id=" + EID;
     }
 
 
     function Delete_Id(e) {
-        let DeId = e.nextSibling;
-        var DID = DeId.innerHTML;
-        Delete_Data (DID);
+      let DeId = e.nextSibling;
+      var DID = DeId.innerHTML;
+      Delete_Data(DID);
     }
 
 
-      function Delete_Data (DID) {
+    function Delete_Data(DID) {
+      console.log(DID);
+      console.log('asd');
+      $(function () {
         console.log(DID);
-        console.log('asd');
-        $(function () {
-          console.log(DID);
-            $.ajax({
-                type: 'delete',
-                url: 'https://djangotest1156.herokuapp.com/api/RSS/delete/',
-                dataType:'json',
-                data: {
-                    'id': DID
-            },
-            success: function (result) {
-                console.log(result);
-                alert(result);
-                window.location.reload("first_version.html")
-            },
-            error: function (xhr) {
-                alert(xhr)
-            }
+        $.ajax({
+          type: 'delete',
+          url: 'https://djangotest1156.herokuapp.com/api/RSS/delete/',
+          dataType: 'json',
+          data: {
+            'id': DID
+          },
+          success: function (result) {
+            console.log(result);
+            alert(result);
+            window.location.reload("first_version.html")
+          },
+          error: function (xhr) {
+            alert(xhr)
+          }
 
         });
 
@@ -187,4 +182,5 @@
   </script>
 
 </body>
+
 </html>

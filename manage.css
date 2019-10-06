@@ -1,17 +1,24 @@
+
 body {
     background-color: rgb(219, 219, 219);
-    font-family: "Microsoft JhengHei";
+}
+
+
+.text {
+    float: left;
+    width: 92%;
 }
 
 table {
     background-color: rgb(255, 255, 255);
     border-collapse: collapse;
-    width: 98%;
+    width: 100%;
+    margin: 0 auto;
     word-wrap: break-word;
     table-layout: fixed;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
 }
 
 .source_filter {
@@ -114,16 +121,21 @@ h6 {
 
 .navbar {
     display: flow-root;
+    background-color: #091b36;
 }
 
-.navbar-brand a {
-    color: cornflowerblue;
+.navbar-brand {
+    /*color: #b1d3ed;*/
+    font-size: 3rem;
+    color: whitesmoke;
+
 }
+
 
 .mamber {
-    position: relative;
-    left: 80%;
+    float: right;
     margin-top: 10px;
+    color: whitesmoke;
 }
 
 #account {
@@ -138,9 +150,10 @@ h6 {
 
 }
 
+
 .search-bar div {
-    width: 98%;
-    margin: 30px auto 5px;
+    width: 100%;
+    margin: 5px auto;
     background-color: gainsboro;
     padding: 5px 15px;
 }
@@ -158,3 +171,32 @@ h6 {
     width: 20%;
 }
 
+.left-bar {
+    width: 8%;
+    height: 1400px;
+    /*position: absolute;*/
+    float: left;
+
+    background-color: #193860;
+
+}
+
+.left-bar ul {
+    list-style-type: none;
+    padding-left: 10%;
+    padding-top: 10%;
+}
+
+.left-bar li {
+    margin: 5% auto;
+}
+
+.left-bar a {
+    color: gainsboro;
+    font-size: 140%;
+}
+
+.left-bar a:hover {
+    color: gainsboro;
+    text-decoration: none;
+}

@@ -29,6 +29,7 @@
             <input type="button" value="搜尋" onclick="search_text()">
         </div>
   </form><br>
+
 </div>
   <table class="tab" id="tab" border="1" align="center">
 
@@ -111,7 +112,7 @@
           document.getElementById("account_text").innerHTML = "account:"+user_name;
         }
       }
-    $(function () {/*API操作和顯示區*/<!--- 初始 -->
+    $(function () {
       var source_text;
       source_text ="";
       $.ajax({
@@ -140,7 +141,7 @@
       });
     })
 
-      function change_source() {/*API操作和顯示區*/<!--- 初始 -->
+      function change_source() {
       var source_text;
       source_text = source_data;
       clear_table();
@@ -253,7 +254,11 @@
 
     function enter_search_text(){
       if (event.keyCode == 13) {
-         search_text();
+        let se_ta = document.getElementById("search_target");
+      console.log(se_ta);
+      var text = se_ta.value;
+      console.log(text);
+      search(text);
      }
     }
 

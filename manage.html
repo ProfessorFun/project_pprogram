@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
-  
+
 <head>
     <title>網頁管理系統</title>
     <meta charset="utf-8">
-    <link href="manage.css" rel="stylesheet" type="text/css"/>
-    <link href="bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="manage.css" rel="stylesheet" type="text/css" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <style>
     .tab tr:nth-child(odd) {
         background: rgb(238, 238, 238)
     }
+
     .tab tr:nth-child(even) {
         background: #FFF
     }
+
     .tab tr:hover {
         background-color: rgb(211, 211, 211);
     }
+
     body {
-        font-family: "Microsoft JhengHei UI",cursive;
+        font-family: "Microsoft JhengHei UI", cursive;
     }
+
     .navbar-brand {
         font-size: xx-large;
     }
@@ -45,10 +49,10 @@
     <nav class="left-bar">
         <ul>
             <li>
-                <a href="">網頁管理</a>
+                <a href="manage.html">網頁管理</a>
             </li>
             <li>
-                <a href="">來源管理</a>
+                <a href="source_manage.html">來源管理</a>
             </li>
         </ul>
     </nav>
@@ -97,8 +101,8 @@
         <table>
             <tr>
                 <p align="center">
-                    <input type="button" onclick="before_clear_table()" id="leftButton" value="before" ></input>
-                    <input type="button" onclick="next_clear_table()" id="rightButton" value="next" ></input>
+                    <input type="button" onclick="before_clear_table()" id="leftButton" value="before"></input>
+                    <input type="button" onclick="next_clear_table()" id="rightButton" value="next"></input>
                 </p>
             </tr>
         </table>
@@ -113,8 +117,8 @@
     var test_page = localStorage.getItem("record_page");
     if (test_page == null) {
         page = 1;
-    }else{
-       page = parseInt(localStorage.getItem("record_page"));
+    } else {
+        page = parseInt(localStorage.getItem("record_page"));
     }
     var source_data = localStorage.getItem("record_source");
     if (source_data == null) {
@@ -218,29 +222,29 @@
             $('<tr>').append(
                 $('<td class="title">').append(
                     $('<p>',
-                        {text: data[1]})
+                        { text: data[1] })
                 ),
                 $('<td class="source">').append(
                     $('<p>',
-                        {text: data[2]})
+                        { text: data[2] })
                 ),
                 $('<td class="category">').append(
                     $('<p>',
-                        {text: data[3].replace('{', '').replace('}', '')})
+                        { text: data[3].replace('{', '').replace('}', '') })
                 ),
                 $('<td class="tag">').append(
                     $('<p>',
-                        {text: data[4]})
+                        { text: data[4] })
                 ),
                 $('<td class="display">').append(
                     $('<p>',
-                        {text: data[5]})
+                        { text: data[5] })
                 ),
                 $('<td colspan="2" class="edit">').append(
                     $('<input type="button" onclick="Edit_Id(this)" value="編輯" style="margin:5%;width:40%;height:100%; float: left">'),
-                    $('<p>', {text: data[0]}),
+                    $('<p>', { text: data[0] }),
                     $('<input type="button" onclick="Delete_Id(this)" value="刪除" style="margin:5%;width:40%;height:100%; float: right">'),
-                    $('<p>', {text: data[0]})
+                    $('<p>', { text: data[0] })
                 )
             )
         );
@@ -319,7 +323,7 @@
         for (var i = 0; i < data.length; i++) {
             $('#source_filter').append(
                 $('<option ></option>',
-                    {text: data[i]})
+                    { text: data[i] })
             )
         }
     }
@@ -363,4 +367,5 @@
         localStorage.clear();
     }
 </script>
+
 </html>

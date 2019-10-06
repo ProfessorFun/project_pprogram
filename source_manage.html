@@ -64,30 +64,23 @@
         <table class="tab" id="tab" border="1" align="center">
 
             <tr class="ro">
-                <th width=30%>
-                    標題
+                    <th width=2%>
+                            編號
+                        </th>
+                <th width=20%>
+                    來源
                 </th>
 
-                <th width=10%>
-                    <select id="source_filter" onChange="change_source_data()">
-                        <option value="">來源</option>
-                    </select>
-                </th>
-
-                <th width=15%>
-                    類別
+                <th width=40%>
+                    網址
                 </th>
 
                 <th width=15%>
-                    TAG
+                    True/False
                 </th>
 
-                <th width=6% class="display_filter">
-                    顯示
-                </th>
-
-                <th width=8% colspan="2">
-
+                <th width=5%>
+                    
                 </th>
 
             </tr>
@@ -121,8 +114,8 @@
         source_data = "";
     }
     var all_page;
-    var final_hash;
-    var user_name;
+    var final_hash;/*source 要得hash*/
+    var user_name;/*source 要得account*/
     var local_hash;
     var url = window.location.search;
     var hash = url.substr(1);
@@ -152,7 +145,28 @@
             document.getElementById("account").innerHTML = user_name;
         }
     }
-    $(function () {
+
+    $(function(){
+        $.ajax({
+            type: 'post',
+            url: "https://djangotest1156.herokuapp.com/api/RSS/get_source_info/",
+            data: {
+                "login_hash": final_hash,
+                "account": user_name,
+            },
+            success: function (result) {
+                console.log(result);
+                $.each(result, function (index, element) {
+                    append_source_table(element);
+                })
+            },
+            error: function () {
+                alert("錯誤")
+            }
+        });
+    })
+
+    /*$(function () {
         var source_text;
         source_text = source_data;
         $.ajax({
@@ -180,13 +194,13 @@
                 alert("錯誤")
             }
         });
-    });
+    });*/
     function enter_search_text() {
         if (event.keyCode == 13) {
             search_text();
         }
     }
-    function change_source() {
+    /*function change_source() {
         var source_text;
         source_text = source_data;
         clear_table();
@@ -207,13 +221,42 @@
                 alert("錯誤")
             }
         });
-    }
-    function change_source_data() {
+    }*/
+
+
+    /*function change_source_data() {
         source_data = $("#source_filter").val();
         page = 1;
         change_source();
+    }*/
+    function append_source_table(data) {
+        $('.tab').append(
+            $('<tr>').append(
+                    $('<td class="number">').append(
+                    $('<p>',
+                        {text: data[0]})
+                ),
+                $('<td class="source">').append(
+                    $('<p>',
+                        {text: data[1]})
+                ),
+                $('<td class="url">').append(
+                    $('<p>',
+                        {text: data[2]})
+                ),
+                $('<td class="true_false">').append(
+                    $('<p>',
+                        {text: data[3]})
+                ),                
+                $('<td class="edit">').append(
+                    $('<input type="button" onclick="Delete_Id(this)" value="刪除">'),
+                    $('<p>', {text: data[0]})
+                )
+            )
+        );
+        $("td.edit").children("p").css("display", "none");
     }
-    function append_table(data) {
+    /*function append_table(data) {
         $('.tab').append(
             $('<tr>').append(
                 $('<td class="title">').append(
@@ -245,8 +288,10 @@
             )
         );
         $("td.edit").children("p").css("display", "none");
-    }
-    function call_data(num) {
+    }*/
+
+    
+    /*function call_data(num) {
         var source_call;
         source_call = source_data;
         $.ajax({
@@ -266,8 +311,8 @@
                 alert("錯誤")
             }
         });
-    }
-    function next_clear_table() {
+    }*/
+    /*function next_clear_table() {
         if (page <= all_page - 0.5) {
             var ntpage = 0;
             ntpage = page + 1;
@@ -275,8 +320,8 @@
             $("#tab tr:not(:first)").html("");
             call_data(ntpage);
         }
-    }
-    function before_clear_table() {
+    }*/
+    /*function before_clear_table() {
         if (page != 1) {
             var bfpage;
             bfpage = page - 1;
@@ -284,7 +329,7 @@
             $("#tab tr:not(:first)").html("");
             call_data(bfpage);
         }
-    }
+    }*/
     function search_text() {
         let se_ta = document.getElementById("search_target");
         console.log(se_ta);
@@ -292,9 +337,11 @@
         console.log(text);
         search(text);
     }
+
     function clear_table() {
         $("#tab tr:not(:first)").html("");
     }
+
     function search(target) {
         $.ajax({
             type: 'post',
@@ -315,28 +362,55 @@
             }
         });
     }
-    function append_dropdown(data) {
+
+    /*function append_dropdown(data) {
         for (var i = 0; i < data.length; i++) {
             $('#source_filter').append(
                 $('<option ></option>',
                     {text: data[i]})
             )
         }
-    }
-    function Edit_Id(e) {
+    }*/
+
+    /*function Edit_Id(e) {
         let EdId = e.nextSibling;
         var EID = EdId.innerHTML;
         console.log(EID);
         localStorage.setItem("record_page", page);
         localStorage.setItem("record_source", source_data);
         window.location.href = "modify.html" + "?" + "id=" + EID;
-    }
+    }*/
     function Delete_Id(e) {
         let DeId = e.nextSibling;
+        console.log(DeId);
         var DID = DeId.innerHTML;
-        Delete_Data(DID);
+        console.log(DID);
+        Delete_Source(DID);
     }
-    function Delete_Data(DID) {
+
+    function Delete_Source(DID){
+        $(function () {
+            console.log(DID);
+            $.ajax({
+                type: 'delete',
+                url: 'https://djangotest1156.herokuapp.com/api/RSS/delete_source/',
+                dataType: 'json',
+                data: {
+                    'id': DID
+                },
+                success: function (result) {
+                    console.log(result);
+                    alert(result+'.已刪除');
+                    window.location.reload()
+                },
+                error: function (xhr) {
+                    alert(xhr)
+                }
+            });
+        })
+    }
+
+    /*function Delete_Data(DID) {
         console.log(DID);
         console.log('asd');
         $(function () {
@@ -358,7 +432,7 @@
                 }
             });
         })
-    }
+    }*/
     function log_out() {
         localStorage.clear();
     }

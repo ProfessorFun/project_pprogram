@@ -36,7 +36,7 @@
   <table class="tab" id="tab" border="1" align="center">
 
     <tr class="ro">
-      <th width=30%>
+      <th width=35%>
         標題
       </th>
 
@@ -47,7 +47,7 @@
         </select>
       </th>
 
-      <th width=15%>
+      <th width=20%>
         類別
       </th>
 
@@ -59,7 +59,7 @@
         顯示
       </th>
 
-      <th width=8% colspan="2">
+      <th width=7% colspan="2">
 
       </th>
 
@@ -144,15 +144,15 @@
         success: function (result) {
           console.log(result);
           $.each(result[0], function (index, element) {
-            append_dropdown(result);
+            append_dropdown(result[0]);
           });
         }
       })
     })
-
+ 
     function append_dropdown(data) {
       $('<.source_filter>').append(
-        $('<option></option>',
+        $('<option>',
           { text: data[0] })
       )
     }

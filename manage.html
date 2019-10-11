@@ -65,6 +65,7 @@
         <div class="search-bar">
             <input type="text" id="search_target" placeholder="輸入關鍵字" onkeydown="enter_search_text()">
             <input id="search-button" type="button" value="搜尋" onclick="search_text()">
+            <input id="multi_delete_button" type="button" value="批量刪除" style="float: right">
         </div>
 
         <table class="tab" id="tab" align="center" rules="rows">
@@ -214,8 +215,8 @@
         $('.tab').append(
             $('<tr class="append-data">').append(
                 $('<td class="checkbox">').append(
-                    $('<input type="checkbox" onclick="append_delete_list(this)">'),
-                    $('<p>',{ text: data[0] })
+                    $('<input type="checkbox" onclick="multi_delete_id(this)">'),
+                    $('<p>', { text: data[0] })
                 ),
                 $('<td class="title">').append(
                     $('<p>',
@@ -365,13 +366,35 @@
         });
     }
 
-    function append_delete_list(e){
+    var delete_list = new Array();
+
+    function multi_delete_id(e) {
         let delete_list_id = e.nextSibling;
-        console.log(delete_list_id);
         var DLID = delete_list_id.innerHTML;
         console.log(DLID);
         var delete_check = e.checked;
         console.log(delete_check);
+        if (delete_check == true) {
+            append_delete_list_element(DLID);
+        }
+        if(delete_check == false) {
+            delete_delete_list_element(DLID);
+        }
+    }
+
+    function append_delete_list_element(DLID){
+        console.log(DLID);
+        console.log(delete_list);
+        delete_list.push(DLID);
+        console.log(delete_list);
+    }
+
+    function delete_delete_list_element(DLID){
+        console.log(DLID);
+        console.log(delete_list);
+        var position = delete_list.indexOf(DLID);
+        delete_list.splice(position,1);
+        console.log(delete_list);
     }
 
     function Edit_Id(e) {

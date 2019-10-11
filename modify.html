@@ -48,9 +48,10 @@
                 <label for="author">author</label>
                 <input type="text" class="form-control" id="author" readonly="readonly" required>
                 <label for="category">category</label>
-                <input type="text" class="form-control" id="category" readonly="readonly" required>
+                <input type="text" class="form-control" id="category" required>
             </div>
         </div>
+
         <div class="mb-3">
             <label for="Title">Title</label>
             <div class="input-group">
@@ -85,7 +86,7 @@
 
     </form>
     <div>
-            <button class="btn btn-primary btn-lg btn-block" id="enter" type="submit" >確定</button>
+            <button class="btn btn-primary btn-lg btn-block" id="ok" type="submit" >確定</button>
         </div>
 </div>
 </body>
@@ -120,7 +121,7 @@ var id;
             }
         });
     });
-$("#enter").click(function () {
+$("#ok").click(function () {
   $.ajax({
       type: 'put',
       data: {

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>網頁管理系統</title>
+    <title>文章管理</title>
     <meta charset="utf-8">
     <link href="manage.css" rel="stylesheet" type="text/css" />
     <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -10,28 +10,31 @@
 
 <style>
     .tab tr:nth-child(odd) {
-        background: rgb(238, 238, 238)
+        /*background: rgb(238, 238, 238);*/
+        height: 8vh;
     }
 
     .tab tr:nth-child(even) {
-        background: #FFF
+        /*background: #FFF;*/
+        height: 8vh;
     }
 
     .tab tr:hover {
-        background-color: rgb(211, 211, 211);
+        /*background-color: rgb(211, 211, 211);*/
+        background-color: rgba(212, 212, 212, 0.71);
     }
 
     body {
-        font-family: "Microsoft JhengHei UI", cursive;
+        font-family: "Microsoft YaHei", cursive;
     }
 
     .navbar-brand {
         font-size: xx-large;
     }
 </style>
- 
+
 <body>
-    <nav class="navbar ">
+    <nav class="navbar">
         <a class="navbar-brand" href="manage.html">後臺管理系統</a>
         <!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
         <!--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
@@ -58,16 +61,18 @@
     </nav>
 
     <div class="text">
+        <h2 class="text">文章管理</h2>
         <div class="search-bar">
-            <div onkeydown="enter_search_text()">
-                <input type="text" id="search_target" placeholder="輸入關鍵字">
-                <input type="button" value="搜尋" onclick="search_text()">
-            </div>
+            <input type="text" id="search_target" placeholder="輸入關鍵字" onkeydown="enter_search_text()">
+            <input id="search-button" type="button" value="搜尋" onclick="search_text()">
         </div>
 
-        <table class="tab" id="tab" border="1" align="center">
+        <table class="tab" id="tab" align="center" rules="rows">
 
-            <tr class="ro">
+            <tr id="table-first">
+                <th width=3%>
+
+                </th>
                 <th width=30%>
                     標題
                 </th>
@@ -86,11 +91,11 @@
                     TAG
                 </th>
 
-                <th width=6% class="display_filter">
+                <th width=2% class="display_filter">
                     顯示
                 </th>
 
-                <th width=8% colspan="2">
+                <th width=12% colspan="2">
 
                 </th>
 
@@ -98,11 +103,16 @@
 
         </table>
 
-        <table>
+        <hr>
+
+        <table id="page-area">
             <tr>
                 <p align="center">
-                    <input type="button" onclick="before_clear_table()" id="leftButton" value="before"></input>
-                    <input type="button" onclick="next_clear_table()" id="rightButton" value="next"></input>
+                    <input type="button" onclick="before_clear_table()" id="leftButton" value="上一頁"></input>
+                    <input id="search-page" type="text" onkeydown="search_page()" onfocus="this.select()">
+                    <label>/</label>
+                    <label id="total-page"></label>
+                    <input type="button" onclick="next_clear_table()" id="rightButton" value="下一頁"></input>
                 </p>
             </tr>
         </table>
@@ -127,36 +137,11 @@
     var all_page;
     var final_hash;
     var user_name;
-    var local_hash;
-    var url = window.location.search;
-    var hash = url.substr(1);
-    if (hash != "") {
-        if (hash.substr(0, 10) < 0) {
-            localStorage.user = hash;
-            local_hash = localStorage.user;
-            final_hash = local_hash.substr(0, 20);
-            user_name = local_hash.substr(20);
-            document.getElementById("account").innerHTML = user_name;
-        } else {
-            localStorage.user = hash;
-            local_hash = localStorage.user;
-            final_hash = local_hash.substr(0, 19);
-            user_name = local_hash.substr(19);
-            document.getElementById("account").innerHTML = user_name;
-        }
-    } else {
-        local_hash = localStorage.user;
-        if (local_hash.substr(0, 10) < 0) {
-            final_hash = local_hash.substr(0, 20);
-            user_name = local_hash.substr(20);
-            document.getElementById("account").innerHTML = user_name;
-        } else {
-            final_hash = local_hash.substr(0, 19);
-            user_name = local_hash.substr(19);
-            document.getElementById("account").innerHTML = user_name;
-        }
-    }
-    $(function () {
+
+    final_hash = localStorage.hash;
+    user_name = localStorage.user;
+    document.getElementById("account").innerHTML = user_name;
+    $(function () {                 //<!-- 初始 -->
         var source_text;
         source_text = source_data;
         $.ajax({
@@ -179,6 +164,11 @@
                 $.each(result[0], function (index, element) {
                     append_table(element);
                 });
+
+                $("#total-page").text(all_page);
+                $("#search-page").val(page);
+                $(".left-bar").css("height", $(".text").height());
+
             },
             error: function () {
                 alert("錯誤")
@@ -190,7 +180,7 @@
             search_text();
         }
     }
-    function change_source() {
+    function change_source() {///*API操作和顯示區*/<!--- 初始 -->
         var source_text;
         source_text = source_data;
         clear_table();
@@ -206,6 +196,8 @@
                 $.each(result[0], function (index, element) {
                     append_table(element);
                 });
+                $("#total-page").text(all_page);
+                $("#search-page").val(1);
             },
             error: function () {
                 alert("錯誤")
@@ -217,18 +209,23 @@
         page = 1;
         change_source();
     }
+
     function append_table(data) {
         $('.tab').append(
-            $('<tr>').append(
+            $('<tr class="append-data">').append(
+                $('<td class="checkbox">').append(
+                    $('<input type="checkbox" onclick="append_delete_list(this)">'),
+                    $('<p>',{ text: data[0] })
+                ),
                 $('<td class="title">').append(
                     $('<p>',
                         { text: data[1] })
                 ),
-                $('<td class="source">').append(
+                $('<td class="source" style="text-align: center">').append(
                     $('<p>',
                         { text: data[2] })
                 ),
-                $('<td class="category">').append(
+                $('<td class="category" style="text-align: center">').append(
                     $('<p>',
                         { text: data[3].replace('{', '').replace('}', '') })
                 ),
@@ -236,20 +233,25 @@
                     $('<p>',
                         { text: data[4] })
                 ),
-                $('<td class="display">').append(
-                    $('<p>',
-                        { text: data[5] })
+                $('<td class="display" style="text-align: center">').append(
+                    '<input type="checkbox" name="myCheckbox" onclick="change_display(this)" ' + (data[5] ? 'checked="checked"' : '') + '/>',
+                    $('<p>', { text: data[0] })
                 ),
                 $('<td colspan="2" class="edit">').append(
-                    $('<input type="button" onclick="Edit_Id(this)" value="編輯" style="margin:5%;width:40%;height:100%; float: left">'),
+
+                    $('<input type="button" onclick="Edit_Id(this)" value="編輯" style="width:40%; float: left">'),
                     $('<p>', { text: data[0] }),
-                    $('<input type="button" onclick="Delete_Id(this)" value="刪除" style="margin:5%;width:40%;height:100%; float: right">'),
+                    $('<input type="button" onclick="Delete_Id(this)" value="刪除" style="width:40%; float: right">'),
                     $('<p>', { text: data[0] })
                 )
             )
         );
+        $("td.checkbox").children("p").css("display", "none");
         $("td.edit").children("p").css("display", "none");
+        $("td.display").children("p").css("display", "none");
     }
+
+
     function call_data(num) {
         var source_call;
         source_call = source_data;
@@ -265,6 +267,7 @@
                     append_table(element);
                 });
                 $('html,body').animate({ scrollTop: 0 }, 0);
+                $("#search-page").val(num);
             },
             error: function () {
                 alert("錯誤")
@@ -276,7 +279,7 @@
             var ntpage = 0;
             ntpage = page + 1;
             page = ntpage;
-            $("#tab tr:not(:first)").html("");
+            clear_table();
             call_data(ntpage);
         }
     }
@@ -285,7 +288,7 @@
             var bfpage;
             bfpage = page - 1;
             page = bfpage;
-            $("#tab tr:not(:first)").html("");
+            clear_table();
             call_data(bfpage);
         }
     }
@@ -297,7 +300,8 @@
         search(text);
     }
     function clear_table() {
-        $("#tab tr:not(:first)").html("");
+        // $("#tab tr:not(:first)").html("");
+        $(".append-data").remove();
     }
     function search(target) {
         $.ajax({
@@ -327,6 +331,49 @@
             )
         }
     }
+    function search_page() {
+        if (event.keyCode === 13) {
+            if ($("#search_page").val() <= all_page) {
+                page = $("#search_page").val();
+                clear_table();
+                page = parseInt(page);
+                call_data(page);
+                $("#search_page").val("");
+            } else {
+                $("#search_page").val("");
+                alert("無此頁數");
+            }
+        }
+    }
+
+    function change_display(e) {
+        let EdId = e.nextSibling;
+        var EID = EdId.innerHTML;
+        var edisplay = e.checked;
+        console.log(edisplay);
+
+        $.ajax({
+            type: 'put',
+            url: 'https://djangotest1156.herokuapp.com/api/RSS/change_display/',
+            data: {
+                "id": EID,
+                "display": edisplay
+            },
+            error: function () {
+                alert("未成功");
+            }
+        });
+    }
+
+    function append_delete_list(e){
+        let delete_list_id = e.nextSibling;
+        console.log(delete_list_id);
+        var DLID = delete_list_id.innerHTML;
+        console.log(DLID);
+        var delete_check = e.checked;
+        console.log(delete_check);
+    }
+
     function Edit_Id(e) {
         let EdId = e.nextSibling;
         var EID = EdId.innerHTML;
@@ -338,7 +385,10 @@
     function Delete_Id(e) {
         let DeId = e.nextSibling;
         var DID = DeId.innerHTML;
-        Delete_Data(DID);
+        if (confirm("確認刪除此文章?")) {
+            Delete_Data(DID);
+        }
+
     }
     function Delete_Data(DID) {
         console.log(DID);
@@ -355,7 +405,7 @@
                 success: function (result) {
                     console.log(result);
                     alert(result);
-                    window.location.reload()
+                    window.location.reload();
                 },
                 error: function (xhr) {
                     alert(xhr)
@@ -364,6 +414,11 @@
         })
     }
     function log_out() {
+        var expire_days = 1; // 過期日期(天)
+        var d = new Date();
+        d.setTime(d.getTime() - (expire_days * 10 * 60 * 1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = "expire_days=ten_minute" + "; " + expires + ";";
         localStorage.clear();
     }
 </script>

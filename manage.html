@@ -371,9 +371,7 @@
     function multi_delete_id(e) {
         let delete_list_id = e.nextSibling;
         var DLID = delete_list_id.innerHTML;
-        console.log(DLID);
         var delete_check = e.checked;
-        console.log(delete_check);
         if (delete_check == true) {
             append_delete_list_element(DLID);
         }
@@ -384,7 +382,6 @@
 
     function append_delete_list_element(DLID){
         console.log(DLID);
-        console.log(delete_list);
         delete_list.push(DLID);
         console.log(delete_list);
     }

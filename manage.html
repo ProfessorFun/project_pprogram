@@ -65,7 +65,7 @@
         <div class="search-bar">
             <input type="text" id="search_target" placeholder="輸入關鍵字" onkeydown="enter_search_text()">
             <input id="search-button" type="button" value="搜尋" onclick="search_text()">
-            <input id="multi_delete_button" type="button" value="批量刪除" style="float: right">
+            <input id="multi_delete_button" type="button" value="批量刪除" onclick="multi_delete()" style="float: right">
         </div>
 
         <table class="tab" id="tab" align="center" rules="rows">
@@ -395,6 +395,27 @@
         var position = delete_list.indexOf(DLID);
         delete_list.splice(position,1);
         console.log(delete_list);
+    }
+
+    function multi_delete(){
+        $(function () {
+            console.log(delete_list);
+            $.ajax({
+                type: 'delete',
+                url: 'https://djangotest1156.herokuapp.com/api/RSS/delete_multiple/',
+                dataType: 'json',
+                data: {
+                    'id': delete_list
+                },
+                success: function (result) {
+                    console.log(result);
+                    //window.location.reload();
+                },
+                error: function (xhr) {
+                    alert(xhr)
+                }
+            });
+        })
     }
 
     function Edit_Id(e) {

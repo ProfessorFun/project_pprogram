@@ -147,19 +147,18 @@
 					<section class="4u"> <a href="#" class="image featured"><img src="images/pic01.jpg"></a>
 						<div class="box">
 							<p>3C產品</p>
-							<a href="#" class="button" onclick="send_3c()">Read More</a>
-							<p style="display:none;">3C產品</p>
+							<a href="#" class="button" onclick="send_3c(this)">Read More</a>
 						</div>
 					</section>
 					<section class="4u"> <a href="#" class="image featured"><img src="images/pic02.jpg" alt=""></a>
 						<div class="box">
-							<p>化妝</p>
+							<p>化妝/保養</p>
 							<a href="#" class="button" onclick="send_makeup()">Read More</a>
 						</div>
 					</section>
 					<section class="4u"> <a href="#" class="image featured"><img src="images/pic03.jpg" alt=""></a>
 						<div class="box">
-							<p>食品</p>
+							<p>美食/伴手禮</p>
 							<a href="#" class="button" onclick="send_food()">Read More</a>
 						</div>
 					</section>
@@ -167,7 +166,7 @@
 				<div class="row no-collapse-1">
 					<section class="4u"> <a href="#" class="image featured"><img src="images/pic04.jpg" alt=""></a>
 						<div class="box">
-							<p>服裝</p>
+							<p>服飾</p>
 							<a href="#" class="button" onclick="send_clothes()">Read More</a>
 						</div>
 					</section>
@@ -179,7 +178,7 @@
 					</section>
 					<section class="4u"> <a href="#" class="image featured"><img src="images/pic06.jpg" alt=""></a>
 						<div class="box">
-							<p>運動</p>
+							<p>戶外/運動</p>
 							<a href="#" class="button" onclick="send_sport()">Read More</a>
 						</div>
 					</section>
@@ -221,12 +220,15 @@
 		console.log(obj_ID);
 	}
 
-	window.addEventListener('mousemove', (event) => {
-		console.log(`${event.pageX},${event.pageY}`)
-	})
+	/*window.addEventListener('mousemove', (event) => {
+		
+		console.log(`${event.pageX},${event.pageY}`);
+	})*/
+	
 
-	function event_click() {
-
+	function event_click(e) {
+		var obj_id = document.getElementsByName("item1").nextSibling;;
+		console.log(obj_id);
 	}
 
 	function send_3c() {
@@ -235,23 +237,23 @@
 	}
 	function send_makeup() {
 		console.log(VIH_HostIP);
-		console.log("3C產品");
+		console.log("化妝/保養");
 	}
 	function send_food() {
 		console.log(VIH_HostIP);
-		console.log("3C產品");
+		console.log("美食/伴手禮");
 	}
 	function send_clothes() {
 		console.log(VIH_HostIP);
-		console.log("3C產品");
+		console.log("服飾");
 	}
 	function send_household() {
 		console.log(VIH_HostIP);
-		console.log("3C產品");
+		console.log("家居");
 	}
 	function send_sport() {
 		console.log(VIH_HostIP);
-		console.log("3C產品");
+		console.log("戶外/運動");
 	}
 </script>
 

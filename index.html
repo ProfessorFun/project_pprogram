@@ -6,7 +6,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
-	 
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.dropotron.min.js"></script>
 	<script src="js/skel.min.js"></script>
@@ -23,7 +23,7 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/style-wide.css" />
 	</noscript>
-	
+
 </head>
 
 <body>
@@ -148,6 +148,7 @@
 						<div class="box">
 							<p>3C產品</p>
 							<a href="#" class="button" onclick="send_3c()">Read More</a>
+							<p style="display:none;">3C產品</p>
 						</div>
 					</section>
 					<section class="4u"> <a href="#" class="image featured"><img src="images/pic02.jpg" alt=""></a>
@@ -208,16 +209,24 @@
 </body>
 
 <script>
-	
-	window.onload = function checkCookie() {
+
+	window.onload = function check_usr_ip() {
 		console.log("Client IP Address ：" + VIH_HostIP);
 		console.log(returnCitySN["cip"] + ',' + returnCitySN["cname"]);
 	}
-	
+
 	function send_message(e) {
 		var obj_ID = e.innerHTML;
 		console.log("Client IP Address ：" + VIH_HostIP);
 		console.log(obj_ID);
+	}
+
+	window.addEventListener('mousemove', (event) => {
+		console.log(`${event.pageX},${event.pageY}`)
+	})
+
+	function event_click() {
+
 	}
 
 	function send_3c() {

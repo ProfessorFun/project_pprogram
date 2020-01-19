@@ -240,12 +240,13 @@ ul.drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 	#footer {
 		text-align: center;
+		background: rgb(255, 84, 115);
+		width: auto;
+		font-size: 50px;
 	}
-
-		#footer .major h2,
-		#footer .major .byline {
-			color: #FFF !important;
-		}
+	#footer p{
+		color: rgb(255, 255, 255);
+	}
 
 /* Copyright */
 

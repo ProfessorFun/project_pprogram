@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>makeup</title>
+	<title>phone</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -40,11 +40,13 @@
 
 					<li><a href="3c.html" onclick=send_message(this)>3C產品</a>
 						<ul>
-							<li><a href="#" onclick=send_message(this)>手機</a>
+							<li><a href="phone.html" onclick=send_message(this)>手機</a>
 								<ul>
-									<li><a href="#" onclick=send_message(this)>samsung</a>
+									<li><a href="samsung.html" onclick=send_message(this)>samsung</a>
 									</li>
 									<li><a href="#" onclick=send_message(this)>apple</a>
+									</li>
+									<li><a href="#" onclick=send_message(this)>sony</a>
 									</li>
 								</ul>
 							</li>
@@ -149,43 +151,23 @@
 		<!-- Extra -->
 		<div id="extra">
 			<div class="container">
-				<div class="row no-collapse-1">
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic01.jpg"></a>
+				<div class="row no-collapse-3">
+					<section class="4u"> <a href="#" class="image featured"><img src="images/samsung.jpg"></a>
 						<div class="box">
-							<p>3C產品</p>
-							<a href="#" class="button" onclick="send_3c(this)">Read More</a>
+							<p>Samsung</p>
+							<a href="samsung.html" class="button" onclick="send_3c(this)">Product Detail</a>
 						</div>
 					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic02.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="images/apple.jpg" alt=""></a>
 						<div class="box">
-							<p>化妝/保養</p>
-							<a href="#" class="button" onclick="send_makeup()">Read More</a>
+							<p>Apple</p>
+							<a href="#" class="button" onclick="send_clothes()">Product Detail</a>
 						</div>
 					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic03.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="images/sony.jpg" alt=""></a>
 						<div class="box">
-							<p>美食/伴手禮</p>
-							<a href="#" class="button" onclick="send_food()">Read More</a>
-						</div>
-					</section>
-				</div>
-				<div class="row no-collapse-1">
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic04.jpg" alt=""></a>
-						<div class="box">
-							<p>服飾</p>
-							<a href="#" class="button" onclick="send_clothes()">Read More</a>
-						</div>
-					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic05.jpg" alt=""></a>
-						<div class="box">
-							<p>家居</p>
-							<a href="#" class="button" onclick="send_household()">Read More</a>
-						</div>
-					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic06.jpg" alt=""></a>
-						<div class="box">
-							<p>戶外/運動</p>
-							<a href="#" class="button" onclick="send_sport()">Read More</a>
+							<p>Sony</p>
+							<a href="#" class="button" onclick="send_clothes()">Product Detail</a>
 						</div>
 					</section>
 				</div>
@@ -201,6 +183,17 @@
 		</div>
 
 	</div>
+
+	<!-- Footer -->
+	<!--
+	<div id="footer" class="wrapper style2">
+		<div class="container">
+			<section>
+				<p>Mauris vulputate dolor</p>
+			</section>
+		</div>
+	</div>
+	-->
 
 	<!-- Copyright -->
 	<div id="copyright">
@@ -222,14 +215,14 @@
 		console.log(returnCitySN["cip"] + ',' + returnCitySN["cname"]);
 	}
 
-	var last_obj_click=null;
+	var last_obj_click = null;
 	function send_message(e) {
 		var obj_ID = e.innerHTML;
 		last_obj_click = localStorage.last_onclick;
 		console.log("user IP Address ：" + VIH_HostIP);
-		console.log("user last onclick:"+last_obj_click);
-		console.log("user onclick : "+obj_ID);
-		localStorage.last_onclick=obj_ID;
+		console.log("user last onclick:" + last_obj_click);
+		console.log("user onclick : " + obj_ID);
+		localStorage.last_onclick = obj_ID;
 	}
 
 	/*window.addEventListener('mousemove', (event) => {
@@ -238,7 +231,7 @@
 	})*/
 
 	window.addEventListener('click', (event) => {
-		console.log("user click :"+`${event.pageX},${event.pageY}`);
+		console.log("user click :" + `${event.pageX},${event.pageY}`);
 	})
 
 

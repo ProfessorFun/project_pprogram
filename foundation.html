@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>3c</title>
+	<title>foudation</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -90,24 +90,24 @@
 				<p></p>
 			</section>
 		</div>
- 
+
 		<!-- Extra -->
 		<div id="extra">
 			<div class="container">
-				<div class="row no-collapse-1">
-					<section class="4u"> <a href="#" class="image featured"><img src="images/phone.jpg"></a>
+				<div class="row no-collapse-3">
+					<section class="4u"> <a href="#" class="image featured"><img src="https://im.marieclaire.com.tw/s805c452h100b0/assets/mc/201901/5C4707EA3CC7B1548158954.jpeg" height="168" width="360"></a>
 						<div class="box">
-							<a href="phone.html" class="button" onclick="send_message(this)">手機</a>
+							<a href="Estee_foundation.html" class="button" onclick="send_message(this)">雅詩蘭黛 水感光影粉底</a>
 						</div>
 					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/keyboard_mouse.jpg" alt=""></a>
+					<section class="4u" style="visibility: hidden;"> <a href="#" class="image featured"><img src="images/apple.jpg" height="168" width="360"></a>
 						<div class="box">
-							<a href="mouse_keyboard.html" class="button" onclick="send_message(this)">鍵盤/滑鼠</a>
+							<a href="#" class="button" onclick="send_message(this)">Xperia Z23</a>
 						</div>
 					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/speaker.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="https://cf.shopee.tw/file/cdb9d0ca8c92971a8b8611d77e84c685" height="168" width="360"></a>
 						<div class="box">
-							<a href="music.html" class="button" onclick="send_message(this)">音響/耳機</a>
+							<a href="Dior_foundation.html" class="button" onclick="send_message(this)">迪奧 完美持久柔光粉底液</a>
 						</div>
 					</section>
 				</div>
@@ -123,6 +123,15 @@
 		</div>
 
 	</div>
+
+	<!-- Footer -->
+	<!--<div id="footer" class="wrapper style2">
+		<div class="container">
+			<section>
+				<p>購物細節處</p>
+			</section>
+		</div>
+	</div>-->
 
 	<!-- Copyright -->
 	<div id="copyright">
@@ -144,14 +153,14 @@
 		console.log(returnCitySN["cip"] + ',' + returnCitySN["cname"]);
 	}
 
-	var last_obj_click=null;
+	var last_obj_click = null;
 	function send_message(e) {
 		var obj_ID = e.innerHTML;
 		last_obj_click = localStorage.last_onclick;
 		console.log("user IP Address ：" + VIH_HostIP);
-		console.log("user last onclick:"+last_obj_click);
-		console.log("user onclick : "+obj_ID);
-		localStorage.last_onclick=obj_ID;
+		console.log("user last onclick:" + last_obj_click);
+		console.log("user onclick : " + obj_ID);
+		localStorage.last_onclick = obj_ID;
 	}
 
 	/*window.addEventListener('mousemove', (event) => {
@@ -160,7 +169,7 @@
 	})*/
 
 	window.addEventListener('click', (event) => {
-		console.log("user click :"+`${event.pageX},${event.pageY}`);
+		console.log("user click :" + `${event.pageX},${event.pageY}`);
 	})
 
 
@@ -168,6 +177,7 @@
 		var obj_id = document.getElementsByName("item1").nextSibling;;
 		console.log(obj_id);
 	}
+
 	function log_out() {
         /*var expire_days = 1; // 過期日期(天)
         var d = new Date();

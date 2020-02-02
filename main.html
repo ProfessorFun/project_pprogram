@@ -12,6 +12,7 @@
 	<script src="js/skel.min.js"></script>
 	<script src="js/skel-layers.min.js"></script>
 	<script src="js/init.js"></script>
+	<script src="js/time_count.js"></script>
 	<script language="JavaScript">
 		VIH_DisplayOnPage = "no"; 
 	</script>
@@ -140,43 +141,6 @@
 	var user_name = localStorage.user;
 	document.getElementById("account").innerHTML = user_name;
 
-	window.onload = function check_usr_ip() {
-		console.log("Client IP Address ：" + VIH_HostIP);
-		console.log(returnCitySN["cip"] + ',' + returnCitySN["cname"]);
-	}
-
-	var last_obj_click=null;
-	function send_message(e) {
-		var obj_ID = e.innerHTML;
-		last_obj_click = localStorage.last_onclick;
-		console.log("user IP Address ：" + VIH_HostIP);
-		console.log("user last onclick:"+last_obj_click);
-		console.log("user onclick : "+obj_ID);
-		localStorage.last_onclick=obj_ID;
-	}
-
-	/*window.addEventListener('mousemove', (event) => {
-		
-		console.log(`${event.pageX},${event.pageY}`);
-	})*/
-
-	window.addEventListener('click', (event) => {
-		console.log("user click :"+`${event.pageX},${event.pageY}`);
-	})
-
-
-	function event_click(e) {
-		var obj_id = document.getElementsByName("item1").nextSibling;;
-		console.log(obj_id);
-	}
-	function log_out() {
-        /*var expire_days = 1; // 過期日期(天)
-        var d = new Date();
-        d.setTime(d.getTime() - (expire_days * 10 * 60 * 1000));
-        var expires = "expires=" + d.toGMTString();
-        document.cookie = "expire_days=ten_minute" + "; " + expires + ";";*/
-		localStorage.clear();
-	}
 </script>
 
 

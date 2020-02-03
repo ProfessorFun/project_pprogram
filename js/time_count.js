@@ -13,11 +13,8 @@ function interval()
 	{
 	minute=0;hour+=1;
     }
-    console.log(hour+"時"+minute+"分"+second+"秒");
 	window.setTimeout("interval();",1000);
 }
-
-
 	window.onload = function check_usr_ip() {
 		console.log("Client IP Address ：" + VIH_HostIP);
 		console.log(returnCitySN["cip"] + ',' + returnCitySN["cname"]);
@@ -55,3 +52,8 @@ function interval()
         document.cookie = "expire_days=ten_minute" + "; " + expires + ";";*/
 		localStorage.clear();
 	}
+
+	window.onbeforeunload = function(){
+		var page_name=document.getElementById("title").innerHTML;
+		console.log(page_name+"停留時間"+hour+"時"+minute+"分"+second+"秒");
+		}

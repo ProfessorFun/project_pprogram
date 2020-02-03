@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
+
 <html>
 
 <head>
-	<title id="title">main page</title>
+	<title id="title">購物網站主頁</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
-
+	<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.dropotron.min.js"></script>
 	<script src="js/skel.min.js"></script>
@@ -18,77 +19,41 @@
 	</script>
 	<script language="JavaScript" src="http://scripts.hashemian.com/js/visitorIPHOST.js.php"></script>
 	<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
-
 	<noscript>
 		<link rel="stylesheet" href="css/skel.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/style-wide.css" />
 	</noscript>
-
+	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 
 <body>
+	<nav id="nav">
+		<ul>
+			<li><a href="main.html">主頁</a></li>
+			<li><a href="3C.html" onclick=send_message(this)>3C</a></li>
+			<li><a href="makeup.html" onclick=send_message(this)>彩妝</a></li>
+			<li><a href="food.html" onclick=send_message(this)>食品</a></li>
+		</ul>
+	</nav>
 
 	<!-- Wrapper -->
-	<div class="wrapper style1">
+	<div id="main" class="wrapper style1">
 
 		<!-- Header -->
 		<div id="header" class="skel-panels-fixed">
-			<nav id="nav">
-				<ul class="drop-down-menu">
-					<li class="active"><a href="main.html">主頁</a>
-					</li>
+			<div style="float: right;">
+				<p id="account">asd</p>
+                <a id="shoppingcar" href="shoppingcar.html">購物車</a>	
+				<a id="logout" href="login.html" onclick=log_out()>登出</a>
+			</div>
 
-					<li><a href="3c.html" onclick=send_message(this)>3C產品</a>
-						<ul>
-							<li><a href="phone.html" onclick=send_message(this)>手機</a>
-								<ul>
-									<li><a href="samsung.html" onclick=send_message(this)>samsung</a>
-									</li>
-									<li><a href="apple.html" onclick=send_message(this)>apple</a>
-									</li>
-									<li><a href="sony.html" onclick=send_message(this)>sony</a>
-									</li>
-								</ul>
-							</li>
-							<li><a href="mouse_keyboard.html" onclick=send_message(this)>鍵盤/滑鼠</a>
-							</li>
-							<li><a href="music.html" onclick=send_message(this)>音響/耳機</a>
-							</li>
-						</ul>
-					</li>
-
-					<li><a href="makeup.html" onclick=send_message(this)>化妝</a>
-						<ul>
-							<li><a href="lipstick.html" onclick=send_message(this)>唇膏</a>
-							</li>
-							<li><a href="foundation.html" onclick=send_message(this)>粉底/遮瑕</a>
-							</li>
-						</ul>
-					</li>
-
-					<li><a href="food.html" onclick=send_message(this)>美食</a>
-						<ul>
-							<li><a href="snack.html" onclick=send_message(this)>休閒零食</a>
-							</li>
-							<li><a href="drink.html" onclick=send_message(this)>飲料/沖泡品</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<div style="float: right;">
-					<p id="account" style="margin:0 0 0 0 ;">asd</p>
-					<a id="logout" href="login.html" onclick=log_out()>登出</a>
-
-					</ul>
-				</div>
-			</nav>
 		</div>
 
 		<!-- Banner -->
 		<div id="banner" class="container">
 			<section>
-				<p></p>
+
 			</section>
 		</div>
 
@@ -96,19 +61,22 @@
 		<div id="extra">
 			<div class="container">
 				<div class="row no-collapse-1">
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic01.jpg"></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="https://b.ecimg.tw/img/h24/v1/layout/onsale/20200203/20200130194328_1-3-320x320.jpg" width="368px" height="300px"></a>
 						<div class="box">
-							<a href="3c.html" class="button" onclick="send_message(this)">3C產品</a>
+							<p></p>
+							<a href="3c.html" class="button" onclick=send_message(this)>3C</a>
 						</div>
 					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic02.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="https://d.ecimg.tw/img/h24/v1/layout/region/D/DDBQ/20190723172616_b12-09-320x320.jpg" width="368px" height="300px"></a>
 						<div class="box">
-							<a href="#" class="button" onclick="send_message(this)">化妝</a>
+							<p></p>
+							<a href="makeup.html" class="button" onclick=send_message(this)>彩妝</a>
 						</div>
 					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic03.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="https://f.ecimg.tw/img/h24/v2/layout/sign/food/20200203094309_b7-06-640x640.jpg" width="368px" height="300px"></a>
 						<div class="box">
-							<a href="#" class="button" onclick="send_message(this)">美食</a>
+							<p></p>
+							<a href="food.html" class="button" onclick=send_message(this)>食品</a>
 						</div>
 					</section>
 				</div>
@@ -116,24 +84,79 @@
 			</div>
 		</div>
 
-		<!-- Main -->
-		<div id="main">
+		<!-- Main 
+					<div id="main">
+						<div class="container">
+							<div class="row"> 
+								
+								 Content 
+								<div class="6u">
+									<section>
+										<ul class="style">
+											<li class="fa fa-wrench">
+												<h3>Integer ultrices</h3>
+												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
+											<li class="fa fa-leaf">
+												<h3>Aliquam luctus</h3>
+												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
+										</ul>
+									</section>
+								</div>
+								<div class="6u">
+									<section>
+										<ul class="style">
+											<li class="fa fa-cogs">
+												<h3>Integer ultrices</h3>
+												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
+											<li class="fa fa-road">
+												<h3>Aliquam luctus</h3>
+												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
+										</ul>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>-->
+
+	</div>
+
+	<!-- Footer 
+		<div id="footer" class="wrapper style2">
 			<div class="container">
-				<div class="row">
-				</div>
+				<section>
+					<header class="major">
+						<h2>Mauris vulputate dolor</h2>
+						<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+					</header>
+					<form method="post" action="#">
+						<div class="row half">
+							<div class="12u">
+								<input class="text" type="text" name="name" id="name" placeholder="Name" />
+							</div>
+						</div>
+						<div class="row half">
+							<div class="12u">
+								<input class="text" type="text" name="email" id="email" placeholder="Email" />
+							</div>
+						</div>
+						<div class="row half">
+							<div class="12u">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<div class="row half">
+							<div class="12u">
+								<ul class="actions">
+									<li>
+										<input type="submit" value="Send Message" class="button alt" />
+									</li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</section>
 			</div>
-		</div>
-
-	</div>
-
-	<!-- Copyright -->
-	<div id="copyright">
-		<div class="container">
-			<div class="copyright">
-				<p>Design: <a href="#">406410554</a>
-			</div>
-		</div>
-	</div>
+		</div>-->
 
 </body>
 
@@ -142,6 +165,5 @@
 	document.getElementById("account").innerHTML = user_name;
 
 </script>
-
 
 </html>

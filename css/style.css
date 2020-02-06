@@ -10,7 +10,7 @@
 /* Basic */
 
 	body {
-		background: url(../images/bg.jpg) no-repeat center top;
+		background: url(../images/bg.jpg);
 	}
 
 	body, span, input, select, textarea {

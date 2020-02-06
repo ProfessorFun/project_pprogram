@@ -57,3 +57,12 @@ function interval()
 		var page_name=document.getElementById("title").innerHTML;
 		console.log(page_name+"停留時間"+hour+"時"+minute+"分"+second+"秒");
 		}
+	function purchase(){
+		var item = document.getElementById("title").innerHTML;
+		console.log(user_name+" buy "+item);
+	}
+
+	
+
+	function shoppingcar(){
+	}

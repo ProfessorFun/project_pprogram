@@ -39,18 +39,8 @@ function interval()
 		console.log("user click :"+`${event.pageX},${event.pageY}`);
 	})
 
-
-	function event_click(e) {
-		var obj_id = document.getElementsByName("item1").nextSibling;;
-		console.log(obj_id);
-	}
 	function log_out() {
-        /*var expire_days = 1; // 過期日期(天)
-        var d = new Date();
-        d.setTime(d.getTime() - (expire_days * 10 * 60 * 1000));
-        var expires = "expires=" + d.toGMTString();
-        document.cookie = "expire_days=ten_minute" + "; " + expires + ";";*/
-		localStorage.clear();
+		//localStorage.clear();
 	}
 
 	window.onbeforeunload = function(){
@@ -62,7 +52,18 @@ function interval()
 		console.log(user_name+" buy "+item);
 	}
 
-	
+	var user = localStorage.user
+	shop = {};
+	shop.shoppingcar_list = [];
+	shop.shoppingcar_list.push(user);
+	localStorage.setItem("totalshoppingcar", JSON.stringify(shop));
 
 	function shoppingcar(){
+		var item = document.getElementById("title").innerHTML;
+		shop = JSON.parse(localStorage.getItem("totalshoppingcar"));
+		shop.shoppingcar_list.push(item);
+		localStorage.setItem("totalshoppingcar", JSON.stringify(shop));
+		console.log(shop.shoppingcar_list);
+		console.log("local:"+localStorage.getItem("totalshoppingcar"));
 	}
+	

@@ -57,7 +57,6 @@ function interval()
 	shop.shoppingcar_list = [];
 	shop.shoppingcar_list.push(user);
 	localStorage.setItem("totalshoppingcar", JSON.stringify(shop));
-
 	function shoppingcar(){
 		var item = document.getElementById("title").innerHTML;
 		shop = JSON.parse(localStorage.getItem("totalshoppingcar"));
@@ -66,4 +65,3 @@ function interval()
 		console.log(shop.shoppingcar_list);
 		console.log("local:"+localStorage.getItem("totalshoppingcar"));
 	}
-	

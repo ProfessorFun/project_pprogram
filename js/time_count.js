@@ -66,26 +66,3 @@ function shoppingcar() {
 		console.log("local = " + localStorage.obj_list);
 	}
 }
-
-function append_table(data) {
-	$('.tab').append(
-		$('<tr class="append-data">').append(
-
-			$('<td class="title">').append(
-				$('<p>',
-					{ text: data[1] })
-			),
-
-			$('<td class="tag">').append(
-				$('<p>',
-					{ text: data[2] })
-			),
-
-			$('<td colspan="2" class="edit">').append(
-				$('<input type="button" onclick="Delete_Id(this)" value="刪除" float: right">'),
-				$('<p>', { text: data[0] })
-			)
-		)
-	);
-	$("td.edit").children("p").css("display", "none");
-}

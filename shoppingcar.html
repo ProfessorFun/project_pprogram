@@ -60,10 +60,10 @@
 			</section>
 		</div>
 
-		<table id="table">
+		<table id="tab" class="tab">
 
 			<tr id="table-first">
-				<th width=70%>
+				<th width=55%>
 					商品
 				</th>
 
@@ -74,6 +74,9 @@
 				<th width=15%>
 					刪除
 				</th>
+				<th width=15%>
+					<a href="#" class="button" onclick=purchase_list(this) style="font-size: 20px;">購買</a>
+				</th>
 			</tr>
 
 		</table>
@@ -83,6 +86,58 @@
 <script>
 	var user_name = localStorage.user;
 	document.getElementById("account").innerHTML = user_name;
+
+	var list = localStorage.obj_list;
+	var tmp_array = list.split(',');
+	var counts = [];
+
+	tmp_array.forEach(function (x) {
+		counts[x] = (counts[x] || 0) + 1;
+	});
+	var temporary = new Array();
+	for (var i in tmp_array) {
+		if (temporary.indexOf(tmp_array[i]) == -1) {
+			temporary.push(tmp_array[i]);
+		}
+	}
+	tmp_array = temporary;
+	console.log(tmp_array);
+	console.log(counts);
+	console.log(tmp_array.length);
+
+	window.onload = function append_table() {
+
+		for (let index = 0; index < tmp_array.length; index++) {
+			$('.tab').append(
+				$('<tr>').append(
+
+					$('<td class="title" style="text-align: center">').append(
+						$('<p>',
+							{ text: tmp_array[0] })
+					),
+
+					$('<td class="num" style="text-align: center">').append(
+						$('<p>',
+							{ text: counts[tmp_array[index]] })
+					),
+
+					$('<td class="edit">').append(
+						$('<input type="button" onclick="Delete_Id(this)" value="刪除" float: right">'),
+						$('<p>', { text: tmp_array[0] })
+					)
+				)
+			);
+			$("td.edit").children("p").css("display", "none");
+		}
+	}
+
+function Delete_Id(e){
+	let Del = e.nextSibling;
+	var DID = Del.innerHTML;
+	if (confirm("確認刪除一個此商品?")) {
+            
+        }
+}
 
 </script>
 

@@ -90,14 +90,7 @@
 <script>
 	var user_name = localStorage.user;
 	document.getElementById("account").innerHTML = user_name;
-	function shoppingcar(){
-		var item = document.getElementById("title").innerHTML;
-		shop = JSON.parse(localStorage.getItem("totalshoppingcar"));
-		shop.shoppingcar_list.push(item);
-		localStorage.setItem("totalshoppingcar", JSON.stringify(shop));
-		console.log(shop.shoppingcar_list);
-		console.log("local:"+localStorage.getItem("totalshoppingcar"));
-	}
+	
 </script>
 
 </html>

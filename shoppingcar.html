@@ -26,7 +26,7 @@
 	</noscript>
 	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
- 
+
 <body>
 	<nav id="nav">
 		<ul>
@@ -47,7 +47,7 @@
 		<div id="header" class="skel-panels-fixed">
 			<div style="float: right;">
 				<p id="account">asd</p>
-                <a id="shoppingcar" href="shoppingcar.html">購物車</a>	
+				<a id="shoppingcar" href="shoppingcar.html">購物車</a>
 				<a id="logout" href="login.html" onclick=log_out()>登出</a>
 			</div>
 
@@ -60,105 +60,23 @@
 			</section>
 		</div>
 
-		<!-- Extra 
-		<div id="extra">
-			<div class="container">
-				<div class="row no-collapse-1">
-					<section class="4u"> <a href="#" class="image featured"><img src="https://b.ecimg.tw/img/h24/v1/layout/onsale/20200203/20200130194328_1-3-320x320.jpg" width="368px" height="300px"></a>
-						<div class="box">
-							<p></p>
-							<a href="3c.html" class="button" onclick=send_message(this)>3C</a>
-						</div>
-					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="https://d.ecimg.tw/img/h24/v1/layout/region/D/DDBQ/20190723172616_b12-09-320x320.jpg" width="368px" height="300px"></a>
-						<div class="box">
-							<p></p>
-							<a href="makeup.html" class="button" onclick=send_message(this)>彩妝</a>
-						</div>
-					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="https://f.ecimg.tw/img/h24/v2/layout/sign/food/20200203094309_b7-06-640x640.jpg" width="368px" height="300px"></a>
-						<div class="box">
-							<p></p>
-							<a href="food.html" class="button" onclick=send_message(this)>食品</a>
-						</div>
-					</section>
-				</div>
-				
-			</div>
-		</div>-->
+		<table id="table">
 
-		<!-- Main -->
-					<div id="main">
-						<div class="container">
-							<div class="row"> 
-								
-								<div class="6u">
-									<section>
-										<ul class="style">
-											<li class="fa fa-wrench">
-												<h3>Integer ultrices</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-											<li class="fa fa-leaf">
-												<h3>Aliquam luctus</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-										</ul>
-									</section>
-								</div>
-								<div class="6u">
-									<section>
-										<ul class="style">
-											<li class="fa fa-cogs">
-												<h3>Integer ultrices</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-											<li class="fa fa-road">
-												<h3>Aliquam luctus</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-										</ul>
-									</section>
-								</div>
-							</div>
-						</div>
-					</div>
+			<tr id="table-first">
+				<th width=70%>
+					商品
+				</th>
 
-	</div>
+				<th width=15%>
+					數量
+				</th>
 
-	<!-- Footer -->
-		<div id="footer" class="wrapper style2">
-			<div class="container">
-				<section>
-					<header class="major">
-						<h2>Mauris vulputate dolor</h2>
-						<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
-					</header>
-					<form method="post" action="#">
-						<div class="row half">
-							<div class="12u">
-								<input class="text" type="text" name="name" id="name" placeholder="Name" />
-							</div>
-						</div>
-						<div class="row half">
-							<div class="12u">
-								<input class="text" type="text" name="email" id="email" placeholder="Email" />
-							</div>
-						</div>
-						<div class="row half">
-							<div class="12u">
-								<textarea name="message" id="message" placeholder="Message"></textarea>
-							</div>
-						</div>
-						<div class="row half">
-							<div class="12u">
-								<ul class="actions">
-									<li>
-										<input type="submit" value="Send Message" class="button alt" />
-									</li>
-								</ul>
-							</div>
-						</div>
-					</form>
-				</section>
-			</div>
-		</div>
+				<th width=15%>
+					刪除
+				</th>
+			</tr>
+
+		</table>
 
 </body>
 

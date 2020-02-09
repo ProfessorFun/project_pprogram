@@ -75,13 +75,6 @@ function shoppingcar() {
 			tmp.shift(tmp[0]);
 		}
 		localStorage.obj_list = tmp;
-		for (i = 0; i < tmp_length; i++) {
-			if (tmp[i] == item) {
-
-			} else {
-				//localStorage.obj_list = tmp;
-			}
-		}
 		console.log("local = " + localStorage.obj_list);
 	}
 }

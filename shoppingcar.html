@@ -103,30 +103,28 @@
 	tmp_array = temporary;
 
 	window.onload = function append_table() {
-		if (tmp_array[0] == "") {
-			tmp_array.shift();
-			for (let index = 0; index < tmp_array.length; index++) {
-				$('.tab').append(
-					$('<tr>').append(
+		tmp_array.shift();
+		for (let index = 0; index < tmp_array.length; index++) {
+			$('.tab').append(
+				$('<tr>').append(
 
-						$('<td class="title" style="text-align: center">').append(
-							$('<p>',
-								{ text: tmp_array[index] })
-						),
+					$('<td class="title" style="text-align: center">').append(
+						$('<p>',
+							{ text: tmp_array[index] })
+					),
 
-						$('<td class="num" style="text-align: center">').append(
-							$('<p>',
-								{ text: counts[tmp_array[index]] })
-						),
+					$('<td class="num" style="text-align: center">').append(
+						$('<p>',
+							{ text: counts[tmp_array[index]] })
+					),
 
-						$('<td class="edit">').append(
-							$('<input type="button" onclick="Delete_Id(this)" value="刪除" float: right">'),
-							$('<p>', { text: tmp_array[index] })
-						)
+					$('<td class="edit">').append(
+						$('<input type="button" onclick="Delete_Id(this)" value="刪除" float: right">'),
+						$('<p>', { text: tmp_array[index] })
 					)
-				);
-				$("td.edit").children("p").css("display", "none");
-			}
+				)
+			);
+			$("td.edit").children("p").css("display", "none");
 		}
 	}
 
@@ -147,18 +145,23 @@
 		length = pur_list.length;
 		for (let i = 0; i < length; i++) {
 			pur_item = pur_list.pop();
+			var product = pur_item.split();
+			var product_id = product[2];
 			$.ajax({
-				url: 'https://my-database-267023.appspot.com/test',
+				url: 'http://my-database-267023.appspot.com/buy_record',
 				type: "POST",
 				dataType: 'json',
-				data: JSON.stringify({ "username": user, "data2": pur_item }),
+				data: JSON.stringify({
+					"order_number": order_number,
+					"uesr_id": user,
+					"item_id": product_id
+				}),
 
 				success: function (result) {
-					console.log(user_name + " buy " + pur_item);
-					localStorage.obj_list = pur_list;
-					window.location.reload();
-				},error: function () {
-					console.log(pur_item + "buy was fail");
+					console.log(user + " buy " + product_id);
+				},
+				error: function () {
+					console.log(product_id + "buy was fail");
 				}
 			});
 		}
